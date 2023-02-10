@@ -1,8 +1,10 @@
 package com.codegym.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +15,5 @@ public class CartItem {
     private Cart cart;
     private Double cartItemPrice;
     private int cartItemQuantity;
-    private String active;
 
 }

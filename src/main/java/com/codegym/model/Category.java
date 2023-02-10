@@ -1,11 +1,14 @@
 package com.codegym.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-public class productCategoryTable {
+@Data
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productCategoryTableID;
+    private int categoryID;
+    private String title;
 
 }

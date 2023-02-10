@@ -5,12 +5,13 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Cart {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cartID;
+    private int transactionID;
     @ManyToOne
     private Account account;
-    private String cartStatus;
+    @ManyToOne
+    private Oder oder;
 
 }
