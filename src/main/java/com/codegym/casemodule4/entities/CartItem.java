@@ -1,103 +1,44 @@
 package com.codegym.casemodule4.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "cart_item", schema = "casemodule4", catalog = "")
+@Setter
+@Getter
+@NoArgsConstructor
 public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "productId")
-    private long productId;
+    private Long productId;
     @Basic
     @Column(name = "cartId")
-    private long cartId;
+    private Long cartId;
     @Basic
     @Column(name = "price")
-    private double price;
+    private Double price;
     @Basic
     @Column(name = "quantity")
-    private short quantity;
+    private Short quantity;
     @Basic
     @Column(name = "active")
-    private byte active;
+    private Byte active;
     @Basic
     @Column(name = "createdAt")
     private Timestamp createdAt;
     @Basic
     @Column(name = "updatedAt")
     private Timestamp updatedAt;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public long getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(long cartId) {
-        this.cartId = cartId;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public short getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(short quantity) {
-        this.quantity = quantity;
-    }
-
-    public byte getActive() {
-        return active;
-    }
-
-    public void setActive(byte active) {
-        this.active = active;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

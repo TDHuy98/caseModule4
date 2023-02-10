@@ -1,16 +1,21 @@
 package com.codegym.casemodule4.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "userId")
     private long userId;
