@@ -1,12 +1,20 @@
 package com.codegym.casemodule4.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
+@Data
 @Table(name = "product_category", schema = "casemodule4", catalog = "")
 @IdClass(ProductCategoryPK.class)
+@Setter
+@Getter
+@NoArgsConstructor
 public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -15,23 +23,8 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "categoryId")
-    private long categoryId;
+    private Long categoryId;
 
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(long categoryId) {
-        this.categoryId = categoryId;
-    }
 
     @Override
     public boolean equals(Object o) {
