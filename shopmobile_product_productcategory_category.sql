@@ -1,0 +1,2 @@
+CREATE DATABASE shopmobile_product_productcategory_category;
+USE shopmobile_product_productcategory_category;
