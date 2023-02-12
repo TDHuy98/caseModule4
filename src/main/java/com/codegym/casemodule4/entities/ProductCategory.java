@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product_category", schema = "casemodule4", catalog = "")
+@Table(name = "product_category", schema = "shopmobile_product_productcategory_category", catalog = "")
 @IdClass(ProductCategoryPK.class)
 @Setter
 @Getter
@@ -16,12 +16,12 @@ import java.util.Objects;
 public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "productId")
-    private long productId;
+    @Column(name = "product_id")
+    private long product_id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "categoryId")
-    private Long categoryId;
+    @Column(name = "category_id")
+    private Long category_id;
 
 
     @Override
@@ -29,11 +29,11 @@ public class ProductCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductCategory that = (ProductCategory) o;
-        return productId == that.productId && categoryId == that.categoryId;
+        return product_id == that.product_id && category_id == that.category_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, categoryId);
+        return Objects.hash(product_id, category_id);
     }
 }

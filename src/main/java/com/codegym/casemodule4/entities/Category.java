@@ -17,8 +17,8 @@ public class Category {
     @Column(name = "id")
     private Long id;
     @Basic
-    @Column(name = "parentId")
-    private Long parentId;
+    @Column(name = "parent_id")
+    private Long parent_id;
     @Basic
     @Column(name = "title")
     private String title;
@@ -28,11 +28,11 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return id == category.id && Objects.equals(parentId, category.parentId) && Objects.equals(title, category.title);
+        return id == category.id && Objects.equals(parent_id, category.parent_id) && Objects.equals(title, category.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, parentId, title);
+        return Objects.hash(id, parent_id, title);
     }
 }

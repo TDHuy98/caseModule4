@@ -14,14 +14,14 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor
 public class ProductCategoryPK implements Serializable {
-    @Column(name = "productId")
+    @Column(name = "product_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productId;
-    @Column(name = "categoryId")
+    private long product_id;
+    @Column(name = "category_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long category_id;
 
 
 
@@ -30,11 +30,11 @@ public class ProductCategoryPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductCategoryPK that = (ProductCategoryPK) o;
-        return productId == that.productId && categoryId == that.categoryId;
+        return product_id == that.product_id && category_id == that.category_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, categoryId);
+        return Objects.hash(product_id, category_id);
     }
 }

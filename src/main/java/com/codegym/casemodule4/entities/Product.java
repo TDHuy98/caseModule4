@@ -18,14 +18,14 @@ public class Product {
     @Column(name = "id")
     private Long id;
     @Basic
-    @Column(name = "userId")
-    private Long userId;
+    @Column(name = "user_id")
+    private Long user_id;
     @Basic
-    @Column(name = "productName")
-    private String productName;
+    @Column(name = "product_name")
+    private String product_name;
     @Basic
-    @Column(name = "productType")
-    private short productType;
+    @Column(name = "product_type")
+    private short product_type;
     @Basic
     @Column(name = "price")
     private double price;
@@ -33,11 +33,11 @@ public class Product {
     @Column(name = "quantity")
     private short quantity;
     @Basic
-    @Column(name = "createdAt")
-    private Timestamp createdAt;
+    @Column(name = "created_at")
+    private Timestamp created_at;
     @Basic
-    @Column(name = "updatedAt")
-    private Timestamp updatedAt;
+    @Column(name = "updated_at")
+    private Timestamp updated_at;
 
 
 
@@ -46,11 +46,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id && userId == product.userId && productType == product.productType && Double.compare(product.price, price) == 0 && quantity == product.quantity && Objects.equals(productName, product.productName) && Objects.equals(createdAt, product.createdAt) && Objects.equals(updatedAt, product.updatedAt);
+        return id == product.id && user_id == product.user_id && product_type == product.product_type && Double.compare(product.price, price) == 0 && quantity == product.quantity && Objects.equals(product_name, product.product_name) && Objects.equals(created_at, product.created_at) && Objects.equals(updated_at, product.updated_at);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, productName, productType, price, quantity, createdAt, updatedAt);
+        return Objects.hash(id, user_id, product_name, product_type, price, quantity, created_at, updated_at);
     }
 }
