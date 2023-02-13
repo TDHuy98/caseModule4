@@ -11,12 +11,12 @@
       <mapping class="com.codegym.casemodule4.entities.Cart"/>
       <mapping class="com.codegym.casemodule4.entities.CartItem"/>
       <mapping class="com.codegym.casemodule4.entities.Category"/>
-      <mapping class="com.codegym.casemodule4.entities.Order"/>
-      <mapping class="com.codegym.casemodule4.entities.OrderItem"/>
       <mapping class="com.codegym.casemodule4.entities.Product"/>
       <mapping class="com.codegym.casemodule4.entities.ProductCategory"/>
       <mapping class="com.codegym.casemodule4.entities.Transaction"/>
       <mapping class="com.codegym.casemodule4.entities.User"/>
+      <mapping class="com.codegym.casemodule4.entities.Bill"/>
+      <mapping class="com.codegym.casemodule4.entities.BillItem"/>
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
