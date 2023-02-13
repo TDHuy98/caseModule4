@@ -109,7 +109,7 @@ ADD CONSTRAINT `fk_cart_item_cart`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
     
-    CREATE TABLE `caseModule4`.`order` (
+    CREATE TABLE `caseModule4`.`bill` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `userId` BIGINT NULL DEFAULT NULL,
   `sessionId` VARCHAR(100) NOT NULL,
@@ -120,7 +120,7 @@ ADD CONSTRAINT `fk_cart_item_cart`
   `createdAt` DATETIME NOT NULL,
   `updatedAt` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `idx_order_user` (`userId` ASC),
+  INDEX `idx_bill_user` (`userId` ASC),
   CONSTRAINT `fk_order_user`
     FOREIGN KEY (`userId`)
     REFERENCES `caseModule4`.`user` (`id`)
@@ -128,28 +128,28 @@ ADD CONSTRAINT `fk_cart_item_cart`
     ON UPDATE NO ACTION);
     
     
-    CREATE TABLE `caseModule4`.`order_item` (
+    CREATE TABLE `caseModule4`.`bill_item` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `productId` BIGINT NOT NULL,
-  `orderId` BIGINT NOT NULL,
+  `billId` BIGINT NOT NULL,
   `price` FLOAT NOT NULL DEFAULT 0,
   `quantity` SMALLINT(6) NOT NULL DEFAULT 0,
   `createdAt` DATETIME NOT NULL,
   `updatedAt` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `idx_order_item_product` (`productId` ASC),
-  CONSTRAINT `fk_order_item_product`
+  INDEX `idx_bill_item_product` (`productId` ASC),
+  CONSTRAINT `fk_bill_item_product`
     FOREIGN KEY (`productId`)
     REFERENCES `caseModule4`.`product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE `caseModule4`.`order_item` 
-ADD INDEX `idx_order_item_order` (`orderId` ASC);
-ALTER TABLE `caseModule4`.`order_item` 
-ADD CONSTRAINT `fk_order_item_order`
-  FOREIGN KEY (`orderId`)
-  REFERENCES `caseModule4`.`order` (`id`)
+ALTER TABLE `caseModule4`.`bill_item`
+ADD INDEX `idx_bill_item_bill` (`billId` ASC);
+ALTER TABLE `caseModule4`.`bill_item`
+ADD CONSTRAINT `fk_bill_item_bill`
+  FOREIGN KEY (`billId`)
+  REFERENCES `caseModule4`.`bill` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
@@ -157,7 +157,7 @@ ADD CONSTRAINT `fk_order_item_order`
   CREATE TABLE `caseModule4`.`transaction` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `userId` BIGINT NOT NULL,
-  `orderId` BIGINT NOT NULL,
+  `billId` BIGINT NOT NULL,
   `mode` SMALLINT(6) NOT NULL DEFAULT 0,
   `status` SMALLINT(6) NOT NULL DEFAULT 0,
   `createdAt` DATETIME NOT NULL,
@@ -171,10 +171,10 @@ ADD CONSTRAINT `fk_order_item_order`
     ON UPDATE NO ACTION);
 
 ALTER TABLE `caseModule4`.`transaction` 
-ADD INDEX `idx_transaction_order` (`orderId` ASC);
+ADD INDEX `idx_transaction_bill` (`billId` ASC);
 ALTER TABLE `caseModule4`.`transaction` 
-ADD CONSTRAINT `fk_transaction_order`
-  FOREIGN KEY (`orderId`)
-  REFERENCES `caseModule4`.`order` (`id`)
+ADD CONSTRAINT `fk_transaction_bill`
+  FOREIGN KEY (`billId`)
+  REFERENCES `caseModule4`.`bill` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
