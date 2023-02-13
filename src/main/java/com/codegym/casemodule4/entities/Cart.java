@@ -8,30 +8,30 @@ import lombok.Setter;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Entity
-@Setter
+@Entity@Setter
 @Getter
 @NoArgsConstructor
 public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private long id;
     @Basic
-    @Column(name = "userId")
+    @Column(name = "user_id", nullable = true)
     private Long userId;
     @Basic
-    @Column(name = "sessionId")
+    @Column(name = "session_id", nullable = false, length = 100)
     private String sessionId;
     @Basic
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private short status;
     @Basic
-    @Column(name = "createdAt")
+    @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
     @Basic
-    @Column(name = "updatedAt")
+    @Column(name = "updated_at", nullable = true)
     private Timestamp updatedAt;
+
 
     @Override
     public boolean equals(Object o) {

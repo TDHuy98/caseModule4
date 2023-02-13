@@ -7,20 +7,19 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@Entity
-@Setter
+@Entity@Setter
 @Getter
 @NoArgsConstructor
 public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", nullable = false)
+    private long id;
     @Basic
-    @Column(name = "parentId")
+    @Column(name = "parent_id", nullable = true)
     private Long parentId;
     @Basic
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 75)
     private String title;
 
     @Override

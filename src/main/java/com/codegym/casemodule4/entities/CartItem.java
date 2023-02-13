@@ -8,37 +8,37 @@ import lombok.Setter;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Entity
-@Table(name = "cart_item", schema = "casemodule4", catalog = "")
-@Setter
+@Entity@Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "cart_item", schema = "casemodule4", catalog = "")
 public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", nullable = false)
+    private long id;
     @Basic
-    @Column(name = "productId")
-    private Long productId;
+    @Column(name = "product_id", nullable = false)
+    private long productId;
     @Basic
-    @Column(name = "cartId")
-    private Long cartId;
+    @Column(name = "cart_id", nullable = false)
+    private long cartId;
     @Basic
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "price", nullable = false, precision = 0)
+    private double price;
     @Basic
-    @Column(name = "quantity")
-    private Short quantity;
+    @Column(name = "quantity", nullable = false)
+    private short quantity;
     @Basic
-    @Column(name = "active")
-    private Byte active;
+    @Column(name = "active", nullable = false)
+    private byte active;
     @Basic
-    @Column(name = "createdAt")
+    @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
     @Basic
-    @Column(name = "updatedAt")
+    @Column(name = "updated_at", nullable = true)
     private Timestamp updatedAt;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
