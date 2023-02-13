@@ -7,21 +7,20 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@Entity
-@Table(name = "product_category", schema = "casemodule4", catalog = "")
-@IdClass(ProductCategoryPK.class)
-@Setter
+@Entity@Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "product_category", schema = "casemodule4", catalog = "")
+@IdClass(ProductCategoryPK.class)
 public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "productId")
+    @Column(name = "product_id", nullable = false)
     private long productId;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "categoryId")
-    private Long categoryId;
+    @Column(name = "category_id", nullable = false)
+    private long categoryId;
 
 
     @Override

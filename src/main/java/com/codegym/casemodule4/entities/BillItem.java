@@ -11,20 +11,18 @@ import java.util.Objects;
 @Entity@Setter
 @Getter
 @NoArgsConstructor
-public class Product {
+@Table(name = "bill_item", schema = "casemodule4", catalog = "")
+public class BillItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
     private long id;
     @Basic
-    @Column(name = "user_id", nullable = false)
-    private long userId;
+    @Column(name = "product_id", nullable = false)
+    private long productId;
     @Basic
-    @Column(name = "productname", nullable = false, length = 75)
-    private String productname;
-    @Basic
-    @Column(name = "producttype", nullable = false)
-    private short producttype;
+    @Column(name = "bill_id", nullable = false)
+    private long billId;
     @Basic
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
@@ -43,12 +41,12 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id == product.id && userId == product.userId && producttype == product.producttype && Double.compare(product.price, price) == 0 && quantity == product.quantity && Objects.equals(productname, product.productname) && Objects.equals(createdAt, product.createdAt) && Objects.equals(updatedAt, product.updatedAt);
+        BillItem billItem = (BillItem) o;
+        return id == billItem.id && productId == billItem.productId && billId == billItem.billId && Double.compare(billItem.price, price) == 0 && quantity == billItem.quantity && Objects.equals(createdAt, billItem.createdAt) && Objects.equals(updatedAt, billItem.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, productname, producttype, price, quantity, createdAt, updatedAt);
+        return Objects.hash(id, productId, billId, price, quantity, createdAt, updatedAt);
     }
 }
