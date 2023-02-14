@@ -39,9 +39,9 @@ CREATE TABLE `caseModule4`.`category` (
   `title` VARCHAR(75) NOT NULL,
   PRIMARY KEY (`id`));
 
-ALTER TABLE `caseModule4`.`category` 
+ALTER TABLE `caseModule4`.`category`
 ADD INDEX `idx_category_parent` (`parentId` ASC);
-ALTER TABLE `caseModule4`.`category` 
+ALTER TABLE `caseModule4`.`category`
 ADD CONSTRAINT `fk_category_parent`
   FOREIGN KEY (`parentId`)
   REFERENCES `caseModule4`.`category` (`id`)
@@ -100,9 +100,9 @@ ADD CONSTRAINT `fk_category_parent`
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE `caseModule4`.`cart_item` 
+ALTER TABLE `caseModule4`.`cart_item`
 ADD INDEX `idx_cart_item_cart` (`cartId` ASC);
-ALTER TABLE `caseModule4`.`cart_item` 
+ALTER TABLE `caseModule4`.`cart_item`
 ADD CONSTRAINT `fk_cart_item_cart`
   FOREIGN KEY (`cartId`)
   REFERENCES `caseModule4`.`cart` (`id`)
@@ -170,9 +170,9 @@ ADD CONSTRAINT `fk_bill_item_bill`
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE `caseModule4`.`transaction` 
+ALTER TABLE `caseModule4`.`transaction`
 ADD INDEX `idx_transaction_bill` (`billId` ASC);
-ALTER TABLE `caseModule4`.`transaction` 
+ALTER TABLE `caseModule4`.`transaction`
 ADD CONSTRAINT `fk_transaction_bill`
   FOREIGN KEY (`billId`)
   REFERENCES `caseModule4`.`bill` (`id`)
