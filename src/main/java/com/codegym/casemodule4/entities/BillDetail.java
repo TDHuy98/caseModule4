@@ -1,38 +1,62 @@
 package com.codegym.casemodule4.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
+
 @Entity
-@Getter@Setter
-@Table(name = "Bill_Details")
-public class BillDetail implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BillDetail {
+    @EmbeddedId
+    @JsonIgnore
+    private BillDetailPK pk;
 
-    private static final long serialVersionUID = 7550745928843183535L;
+    @Basic
+    @Column(nullable = false, name = "quantity")
+    private int quantity;
+    // hashcode() and equals() methods
 
-    @Id
-    @Column(name = "id", length = 50, nullable = false)
-    private Long id;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id",nullable = false)
+//    private Account account;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BILL_ID", nullable = false, //
-            foreignKey = @ForeignKey(name = "BILL_DETAIL_BILL_FK"))
-    private Bill bill;
+    // standard getters and setters
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false, //
-            foreignKey = @ForeignKey(name = "BILL_DETAIL_PROD_FK"))
-    private Product product;
+    public BillDetail(Bill bill, Product product, Integer quantity) {
+        pk = new BillDetailPK();
+        pk.setBill(bill);
+//        pk.setAccount(account);
+        pk.setProduct(product);
+        this.quantity = quantity;
+    }
 
-    @Column(name = "Quanity", nullable = false)
-    private int quanity;
+    public int getQuantity() {
+        return quantity;
+    }
 
-    @Column(name = "Price", nullable = false)
-    private double price;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-    @Column(name = "Amount", nullable = false)
-    private double amount;
+    @Transient
+    public Product getProduct() {
+        return this.pk.getProduct();
+    }
+
+    @Transient
+    public Double getTotalPrice() {
+        return getProduct().getPrice() * getQuantity();
+    }
+
+
+
 }
+

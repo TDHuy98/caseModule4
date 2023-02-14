@@ -2,7 +2,9 @@ package com.codegym.casemodule4.repositories;
 
 import com.codegym.casemodule4.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
-public interface AccountRepository extends JpaRepository<Account, String>, JpaSpecificationExecutor<Account> {
+@Repository
+
+public interface AccountRepository extends JpaRepository<Account, Long> {
 }
