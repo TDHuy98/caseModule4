@@ -1,69 +1,59 @@
 package com.codegym.casemodule4.entities;
 
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-import java.io.Serializable;
+
+import jakarta.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-@Entity
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Bill", //
-        uniqueConstraints = {@UniqueConstraint(columnNames = "Bill_Num")})
-public class Bill implements Serializable {
+@Entity
+@Table(name = "bills")
+public class Bill {
 
-    private static final long serialVersionUID = -2576670215015463100L;
-
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    @Column(name = "Bill_Date", nullable = false)
-    private Date billDate;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Account accountByUserId;
 
-    @Column(name = "Bill_Num", nullable = false)
-    private int billNum;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dateCreated;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dateUpdated;
 
-    @Column(name = "Amount", nullable = false)
-    private double amount;
+    private String status;
 
-    @Column(name = "Customer_Name", length = 255, nullable = false)
-    private String customerName;
+    @JsonManagedReference
+    @OneToMany
+    @Valid
+    private List<BillDetail> billDetail = new ArrayList<>();
 
-    @Column(name = "Customer_Address", length = 255, nullable = false)
-    private String customerAddress;
+    @Transient
+    public Double getTotalBillPrice() {
+        double sum = 0D;
+        List<BillDetail> billDetails = getBillDetail();
+        for (BillDetail op : billDetails) {
+            sum += op.getTotalPrice();
+        }
+        return sum;
+    }
 
-    @Column(name = "Customer_Email", length = 128, nullable = false)
-    private String customerEmail;
+    @Transient
+    public int getNumberOfProducts() {
+        return this.billDetail.size();
+    }
 
-    @Column(name = "Customer_Phone", length = 128, nullable = false)
-    private String customerPhone;
-//    @Column(name = "status", nullable = false)
-//    private short status;
-//    @Basic
-//    @Column(name = "sub_total", nullable = false, precision = 0)
-//    private double subTotal;
-//    @Basic
-//    @Column(name = "tax", nullable = false, precision = 0)
-//    private double tax;
-//    @Basic
-//    @Column(name = "total", nullable = false, precision = 0)
-//    private double total;
-//    @Basic
-//    @Column(name = "created_at", nullable = false)
-//    private Timestamp createdAt;
-//    @Basic
-//    @Column(name = "updated_at", nullable = true)
-//    private Timestamp updatedAt;
-//
-
-
-
+    // standard getters and setters
 }
