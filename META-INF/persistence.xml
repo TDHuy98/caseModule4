@@ -5,13 +5,13 @@
              version="3.0">
   <persistence-unit name="default">
 
-      <class>com.codegym.casemodule4.entities.Cart</class>
-      <class>com.codegym.casemodule4.entities.CartItem</class>
+      <class>com.codegym.casemodule4.models.Cart</class>
+      <class>com.codegym.casemodule4.models.CartItem</class>
       <class>com.codegym.casemodule4.entities.Category</class>
       <class>com.codegym.casemodule4.entities.Product</class>
       <class>com.codegym.casemodule4.entities.ProductCategory</class>
       <class>com.codegym.casemodule4.entities.Transaction</class>
-      <class>com.codegym.casemodule4.entities.User</class>
+      <class>com.codegym.casemodule4.models.User</class>
       <class>com.codegym.casemodule4.entities.Bill</class>
       <class>com.codegym.casemodule4.entities.BillItem</class>
       <properties>

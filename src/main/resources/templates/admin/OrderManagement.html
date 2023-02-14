@@ -2,50 +2,82 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Order Management</title>
-    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" name="viewport"/>
 
-    <link  rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" type="text/css"/>
+
 </head>
 <body>
 <main>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+    <div class="container-fluid">
+
+        <div>
+            <h1>WELCOME TO ORDER MANAGEMENT
+            </h1>
         </div>
-    </nav></main>
+        <div>
+            <form method="post">
+                <input placeholder="Nhập nội dung tìm kiếm" type="text">
+                <select>
+                    <option>Tìm kiếm theo ID của người dùng</option>
+                    <option>Tìm kiếm theo ID đơn hàng</option>
+                </select>
+                <button class="btn btn-success">Tìm kiếm</button>
+
+
+            </form>
+        </div>
+        <div class="dropdown">
+            <a aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" href="#"
+               role="button">
+                Dropdown link
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">sắp xếp theo ID đơn hàng</a></li>
+                <li><a class="dropdown-item" href="#">sắp xếp theo ID người dùng</a></li>
+                <li><a class="dropdown-item" href="#">sắp xếp theo giasa trị đơn hàng</a></li>
+            </ul>
+        </div>
+
+        <div class="table">
+            <table class="table container-fluid">
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>ID đơn hàng</th>
+                    <th>User ID</th>
+                    <th>Product ID</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Sub-total</th>
+                    <th>Tax</th>
+                    <th>Total</th>
+                    <th>Status</th><!--trạng thái thanh toán-->
+                    <th>Create time</th>
+                    <th>Update time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+</body>
 <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
 <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-</body>
-
 </html>
