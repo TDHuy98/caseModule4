@@ -1,8 +1,11 @@
 package com.codegym.casemodule4.entities;
 
-import javax.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,8 +18,8 @@ public class Product implements Serializable {
     private static final long serialVersionUID = -1000119078147252957L;
 
     @Id
-    @Column(name = "Code", length = 20, nullable = false)
-    private String code;
+    @Column(name = "id", length = 20, nullable = false)
+    private int id;
 
     @Column(name = "Name", length = 255, nullable = false)
     private String name;
