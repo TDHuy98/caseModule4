@@ -1,58 +1,69 @@
 package com.codegym.casemodule4.entities;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.sql.Timestamp;
-import java.util.Objects;
-@Data
+import lombok.*;
+
+import javax.persistence.*;
+
+import java.io.Serializable;
+import java.util.Date;
+
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
-public class Bill {
+@AllArgsConstructor
+@Table(name = "Bill", //
+        uniqueConstraints = {@UniqueConstraint(columnNames = "Bill_Num")})
+public class Bill implements Serializable {
+
+    private static final long serialVersionUID = -2576670215015463100L;
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    private long id;
-    @Basic
-    @Column(name = "user_id", nullable = true)
-    private Long userId;
-    @Basic
-    @Column(name = "session_id", nullable = false, length = 100)
-    private String sessionId;
-    @Basic
-    @Column(name = "status", nullable = false)
-    private short status;
-    @Basic
-    @Column(name = "sub_total", nullable = false, precision = 0)
-    private double subTotal;
-    @Basic
-    @Column(name = "tax", nullable = false, precision = 0)
-    private double tax;
-    @Basic
-    @Column(name = "total", nullable = false, precision = 0)
-    private double total;
-    @Basic
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-    @Basic
-    @Column(name = "updated_at", nullable = true)
-    private Timestamp updatedAt;
+    private Long id;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bill bill = (Bill) o;
-        return id == bill.id && status == bill.status && Double.compare(bill.subTotal, subTotal) == 0 && Double.compare(bill.tax, tax) == 0 && Double.compare(bill.total, total) == 0 && Objects.equals(userId, bill.userId) && Objects.equals(sessionId, bill.sessionId) && Objects.equals(createdAt, bill.createdAt) && Objects.equals(updatedAt, bill.updatedAt);
-    }
+    @Column(name = "Bill_Date", nullable = false)
+    private Date billDate;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userId, sessionId, status, subTotal, tax, total, createdAt, updatedAt);
-    }
+    @Column(name = "Bill_Num", nullable = false)
+    private int billNum;
+
+    @Column(name = "Amount", nullable = false)
+    private double amount;
+
+    @Column(name = "Customer_Name", length = 255, nullable = false)
+    private String customerName;
+
+    @Column(name = "Customer_Address", length = 255, nullable = false)
+    private String customerAddress;
+
+    @Column(name = "Customer_Email", length = 128, nullable = false)
+    private String customerEmail;
+
+    @Column(name = "Customer_Phone", length = 128, nullable = false)
+    private String customerPhone;
+//    @Column(name = "status", nullable = false)
+//    private short status;
+//    @Basic
+//    @Column(name = "sub_total", nullable = false, precision = 0)
+//    private double subTotal;
+//    @Basic
+//    @Column(name = "tax", nullable = false, precision = 0)
+//    private double tax;
+//    @Basic
+//    @Column(name = "total", nullable = false, precision = 0)
+//    private double total;
+//    @Basic
+//    @Column(name = "created_at", nullable = false)
+//    private Timestamp createdAt;
+//    @Basic
+//    @Column(name = "updated_at", nullable = true)
+//    private Timestamp updatedAt;
+//
+
+
+
 }
