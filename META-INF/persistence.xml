@@ -5,20 +5,18 @@
              version="3.0">
   <persistence-unit name="default">
 
-      <class>com.codegym.casemodule4.models.Cart</class>
-      <class>com.codegym.casemodule4.models.CartItem</class>
-      <class>com.codegym.casemodule4.entities.Category</class>
-      <class>com.codegym.casemodule4.entities.Product</class>
-      <class>com.codegym.casemodule4.entities.ProductCategory</class>
-      <class>com.codegym.casemodule4.entities.Transaction</class>
-      <class>com.codegym.casemodule4.models.User</class>
-      <class>com.codegym.casemodule4.entities.Bill</class>
-      <class>com.codegym.casemodule4.entities.BillItem</class>
-      <properties>
-          <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306"/>
-          <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-          <property name="hibernate.connection.username" value="root"/>
-          <property name="hibernate.connection.password" value="12345678"/>
-      </properties>
   </persistence-unit>
+    <persistence-unit name="persistenceUnit">
+      <class>com.codegym.casemodule4.entities.Account</class>
+      <class>com.codegym.casemodule4.entities.BillDetail</class>
+      <class>com.codegym.casemodule4.entities.Bills</class>
+      <class>com.codegym.casemodule4.entities.BillsBillDetail</class>
+      <class>com.codegym.casemodule4.entities.Products</class>
+      <properties>
+        <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/casemodule4v2"/>
+        <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="hibernate.connection.username" value="root"/>
+        <property name="hibernate.connection.password" value="12345678"/>
+      </properties>
+    </persistence-unit>
 </persistence>

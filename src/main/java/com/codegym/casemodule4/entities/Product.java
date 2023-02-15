@@ -5,35 +5,38 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Setter @Getter
-@NoArgsConstructor @AllArgsConstructor
-@Table(name = "Products")
-public class Product implements Serializable {
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Product")
+public class Product {
 
-    private static final long serialVersionUID = -1000119078147252957L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", length = 20, nullable = false)
-    private int id;
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category category;
 
     @Column(name = "Name", length = 255, nullable = false)
     private String name;
 
     @Column(name = "Price", nullable = false)
-    private Double price;
+    private double price;
 
-    @Lob
-    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
-    private byte[] image;
+    //    @Lob
+//    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
+    @Column(name = "image", nullable = false)
+    private String image;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "Create_Date", nullable = false)
-    private Date createDate;
 
 
 }
