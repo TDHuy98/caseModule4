@@ -2,33 +2,18 @@ package com.codegym.casemodule4.services;
 
 import com.codegym.casemodule4.entities.Product;
 
-import com.codegym.casemodule4.repositories.IProduct;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class ProductService {
-    @Autowired
-    IProduct iProduct;
+public interface ProductService {
+    List<Product> getProductsList();
 
-    public List<Product> findAll() {
-        return (List<Product>) iProduct.findAll();
-    }
+    void createProduct(Product product);
 
-    public Product save(Product product) {
-        return iProduct.save(product);
-    }
+    void removeProductById(Long id);
 
-    public Product deleteById(Long id){
-        Product product = iProduct.findById(id).get();
-        iProduct.deleteById(id);
-        return product;
-    }
+    Optional<Product> getProductById(Long id);
 
-    public Product findById(Long id) {
-        return   iProduct.findById(id).get();
-    }
-
+    List<Product> getAllProductByCategoryId(int id);
+    List<Product> search(String name);
 }

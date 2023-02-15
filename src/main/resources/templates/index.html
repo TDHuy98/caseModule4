@@ -52,6 +52,18 @@
     </div>
 </nav>
 
+<h2 th:each="s, iStat : ${search}">
+    <p scope="row" th:text="${iStat.index + 1}">a</p>
+    <p th:text="${s.name}">a</p>
+
+
+    <img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + s.image}}"></td>
+    <p th:text="${s.category.name}">a</p>
+    <p th:text="${s.price}"></p>
+
+
+</h2>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
