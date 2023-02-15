@@ -89,10 +89,11 @@ public class AdminController {
                                  @RequestParam("productImage") MultipartFile file,
                                  @RequestParam("img") String img) throws IOException {
         Product product = new Product();
-        product.setId(product.getId());
+        product.setId(productDTO.getId());
         product.setName(productDTO.getName());
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
         product.setPrice(productDTO.getPrice());
+        product.setUpdate_at(productDTO.getUpdate_at());
         String imageUUID;
         if (!file.isEmpty()) {
             imageUUID = file.getOriginalFilename();
@@ -126,6 +127,7 @@ public class AdminController {
         productDTO.setCategoryId(product.getCategory().getId());
         productDTO.setPrice(product.getPrice());
         productDTO.setImage(product.getImage());
+        productDTO.setUpdate_at(product.getUpdate_at());
 
         model.addAttribute("productDTO", productDTO);
         model.addAttribute("categories", categoryService.getCategoryList());

@@ -15,5 +15,4 @@ public interface ProductService {
     Optional<Product> getProductById(Long id);
 
     List<Product> getAllProductByCategoryId(int id);
-    List<Product> search(String name);
 }

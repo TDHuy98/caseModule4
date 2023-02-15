@@ -1,6 +1,7 @@
 package com.codegym.casemodule4.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * A DTO for the {@link com.codegym.casemodule4.entities.Product} entity
@@ -11,11 +12,21 @@ public class ProductDTO implements Serializable {
     private String name;
     private double price;
     private String image;
+    private Date update_at;
 
+
+    public Date getUpdate_at() {
+        return update_at;
+    }
+
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
+    }
 
     public ProductDTO() {
 
     }
+
 
 
     public Long getId() {
@@ -68,6 +79,26 @@ public class ProductDTO implements Serializable {
 
     }
 
+    public ProductDTO(Long id, int categoryId, String name, double price, String image, Date update_at) {
+        this.id = id;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.update_at = update_at;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "ProductDTO{" +
+//                "id=" + id +
+//                ", categoryId=" + categoryId +
+//                ", name='" + name + '\'' +
+//                ", price=" + price +
+//                ", image='" + image + '\'' +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "ProductDTO{" +
@@ -76,6 +107,7 @@ public class ProductDTO implements Serializable {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", image='" + image + '\'' +
+                ", update_at=" + update_at +
                 '}';
     }
 }

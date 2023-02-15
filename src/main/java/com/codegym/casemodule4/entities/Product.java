@@ -37,6 +37,8 @@ public class Product {
     @Column(name = "image", nullable = false)
     private String image;
 
+    @Column(name = "update_at", nullable = false)
+    private Date update_at;
 
 
 }
