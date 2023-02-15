@@ -32,6 +32,9 @@ public class Product {
     @Column(name = "Price", nullable = false)
     private double price;
 
+    @Column(name = "update_at", nullable = false)
+    private Date update_at;
+
     //    @Lob
 //    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
     @Column(name = "image", nullable = false)
