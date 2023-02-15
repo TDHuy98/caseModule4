@@ -1,42 +1,36 @@
 package com.codegym.casemodule4.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Product")
-public class Product {
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
+@Table(name = "Products")
+public class Product implements Serializable {
 
+    private static final long serialVersionUID = -1000119078147252957L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", length = 20, nullable = false)
+    @Column(name = "ID", length = 20, nullable = false)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-    private Category category;
 
     @Column(name = "Name", length = 255, nullable = false)
     private String name;
 
     @Column(name = "Price", nullable = false)
-    private double price;
+    private Double price;
 
-    //    @Lob
-//    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
-    @Column(name = "image", nullable = false)
-    private String image;
+    @Lob
+    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
+    private byte[] image;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "Create_Date", nullable = false)
+    private Date createDate;
 
 
 }
