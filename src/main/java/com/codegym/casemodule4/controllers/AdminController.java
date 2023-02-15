@@ -89,7 +89,7 @@ public class AdminController {
                                  @RequestParam("productImage") MultipartFile file,
                                  @RequestParam("img") String img) throws IOException {
         Product product = new Product();
-        product.setId(product.getId());
+        product.setId(productDTO.getId());
         product.setName(productDTO.getName());
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
         product.setPrice(productDTO.getPrice());
