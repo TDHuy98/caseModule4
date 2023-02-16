@@ -1,37 +1,30 @@
 package com.codegym.casemodule4.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "bills")
+@Table(name = "bill")
 public class Bill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private Account accountByUserId;
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dateCreated;
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dateUpdated;
+    private Account account;
 
     private String status;
 

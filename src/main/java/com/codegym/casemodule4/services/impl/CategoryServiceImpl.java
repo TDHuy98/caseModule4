@@ -29,7 +29,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void addCategory(Category category) {
-        categoryRepository.save(category);
+//        if (!(categoryRepository.findAll()
+//                .stream()
+//                .anyMatch(category1 -> category1.equals(category)))){
+            categoryRepository.save(category);
+//          }
     }
 
     @Override

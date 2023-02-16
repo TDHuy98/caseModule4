@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, account-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -46,15 +46,15 @@
         <div class="col-sm-6">
             <h2>Login</h2>
             <p>Please fill out this to login</p>
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/login}" th:object="${account}" method="post">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg">
+                    <label for="username">User Name</label>
+                    <input type="text" th:field="*{userName}" name="username" id="username" placeholder="Your User Name" class="form-control form-control-lg">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password">
+                    <input type="password" th:field="*{password}" class="form-control form-control-lg" placeholder="Password" name="password" id="password">
                 </div>
                 <div th:if="${param.error}" class="alert alert-error text-danger">
                     Invalid username or password.
@@ -67,9 +67,6 @@
                 <br>
                 <a href="" th:href="@{/forgotpassword}">Forgot password ?</a>
             </form>
-            <br>
-            <h3>OR</h3>
-            <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>
 
         </div>
 

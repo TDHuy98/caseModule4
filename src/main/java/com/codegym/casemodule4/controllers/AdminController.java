@@ -3,9 +3,11 @@ package com.codegym.casemodule4.controllers;
 import com.codegym.casemodule4.dto.ProductDTO;
 import com.codegym.casemodule4.entities.Category;
 import com.codegym.casemodule4.entities.Product;
+import com.codegym.casemodule4.repositories.CategoryRepository;
 import com.codegym.casemodule4.services.CategoryService;
 import com.codegym.casemodule4.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +41,10 @@ public class AdminController {
 
     @GetMapping("/admin/categories/add")
     public String getCategoriesAdd(ModelMap model) {
-        model.addAttribute("category", new Category());
-        return "categoriesAdd";
+
+            model.addAttribute("category", new Category());
+            return "categoriesAdd";
+
     }
 
     @PostMapping("/admin/categories/add")
@@ -56,12 +60,24 @@ public class AdminController {
     }
 
     @GetMapping("/admin/categories/update/{id}")
-    public String updateCategory(@PathVariable Integer id, ModelMap model) {
-        Optional<Category> category = categoryService.getCategoryById(id);
-        if (category.isPresent()) {
-            model.addAttribute("category", category.get());
-            return "categoriesAdd";
-        } else return "404";
+    public String updateCategory(@PathVariable Integer id, ModelMap model) throws DataAccessException {
+        try {
+            Optional<Category> category = categoryService.getCategoryById(id);
+            if (category.isPresent()) {
+                model.addAttribute("category", category.get());
+                return "categoriesAdd";
+            } else return "404";
+
+        } catch (DataAccessException  exception) {
+            String messages = "Category đã tồn tại";
+            model.addAttribute("messages", messages);
+            Optional<Category> category = categoryService.getCategoryById(id);
+            if (category.isPresent()) {
+                model.addAttribute("category", category.get());
+                return "categoriesAdd";
+            } else return "404";
+        }
+
     }
 
 
@@ -83,6 +99,8 @@ public class AdminController {
 
 
     public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @PostMapping("/admin/products/add")
     public String postProductAdd(@ModelAttribute("productDTO") ProductDTO productDTO,

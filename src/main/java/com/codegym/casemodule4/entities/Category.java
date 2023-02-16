@@ -2,15 +2,17 @@ package com.codegym.casemodule4.entities;
 
 import lombok.*;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @EqualsAndHashCode
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "category_id")
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name", nullable = false)
     private String name;
 
     public Integer getId() {

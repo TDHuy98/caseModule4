@@ -1,7 +1,8 @@
 package com.codegym.casemodule4.dto;
 
-import com.codegym.casemodule4.entities.Account;
+
 import com.codegym.casemodule4.entities.BillDetail;
+import com.codegym.casemodule4.entities.Account;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

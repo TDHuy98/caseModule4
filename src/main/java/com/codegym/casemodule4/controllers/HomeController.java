@@ -1,5 +1,6 @@
 package com.codegym.casemodule4.controllers;
 
+import com.codegym.casemodule4.global.GlobalData;
 import com.codegym.casemodule4.services.CategoryService;
 import com.codegym.casemodule4.services.ProductService;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,15 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(ModelMap model) {
-        return "shop";
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "index";
     }
 
     @GetMapping("/shop")
     public String shop(ModelMap model) {
         model.addAttribute("categories", categoryService.getCategoryList());
         model.addAttribute("products", productService.getProductsList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
 
         return "shop";
     }
@@ -43,6 +46,8 @@ public class HomeController {
     @GetMapping("/shop/viewproduct/{id}")
     public String viewProduct(ModelMap model, @PathVariable Long id) {
         model.addAttribute("product", productService.getProductById(id).get());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
         return "viewProduct";
     }
 

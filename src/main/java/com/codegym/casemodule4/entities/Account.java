@@ -1,41 +1,27 @@
 package com.codegym.casemodule4.entities;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.*;
 
-import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter@Getter
-public class Account implements Serializable {
-    private static final long serialVersionUID = -2054386655979281969L;
-
-    public static final String ROLE_USER = "USER";
-    public static final String ROLE_ADMIN = "ADMIN";
-
+public class Account {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_Name",length = 20,nullable = false)
-    private String userName;
+    private long id;
+    private String username;
+    private String password;
+    private String fullname;
+    private String phonenumber;
 
-    @Column(name = "Encryted_Password", length = 128, nullable = false)
-    private String encrytedPassword;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
-    @Column(name = "Active", length = 1, nullable = false)
-    private boolean active;
-
-    @Column(name = "User_Role", length = 20, nullable = false)
-    private String userRole;
-
-
-
-    @Override
-    public String toString() {
-        return "[" + this.userName + "," + this.encrytedPassword + "," + this.userRole + "]";
-    }
 
 }
