@@ -26,7 +26,7 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
-    @Column(name = "Name", length = 255, nullable = false)
+    @Column(name = "Name", length = 255, nullable = false,unique=true)
     private String name;
 
     @Column(name = "Price", nullable = false)
