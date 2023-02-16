@@ -1,10 +1,13 @@
 package com.codegym.casemodule4.entities;
 
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@EqualsAndHashCode
 @Table(name = "cart_detail")
 public class CartDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,16 +79,5 @@ public class CartDetail {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CartDetail cartItem = (CartDetail) o;
-        return id == cartItem.id && productId == cartItem.productId && cart == cartItem.cart && Double.compare(cartItem.price, price) == 0 && quantity == cartItem.quantity && active == cartItem.active && Objects.equals(createdAt, cartItem.createdAt) && Objects.equals(updatedAt, cartItem.updatedAt);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, productId, cart, price, quantity, active, createdAt, updatedAt);
-    }
 }

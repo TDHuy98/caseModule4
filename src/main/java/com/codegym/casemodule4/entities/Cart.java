@@ -1,14 +1,15 @@
 package com.codegym.casemodule4.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
+@EqualsAndHashCode
 public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -16,7 +17,7 @@ public class Cart {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Account account;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "cart")
@@ -33,9 +34,9 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Long id, User user, String sessionId, short status) {
+    public Cart(Long id, Account account, String sessionId, short status) {
         this.id = id;
-        this.user = user;
+        this.account = account;
         this.sessionId = sessionId;
         this.status = status;
     }
@@ -48,12 +49,12 @@ public class Cart {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public String getSessionId() {
@@ -72,16 +73,5 @@ public class Cart {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cart cart = (Cart) o;
-        return id == cart.id && status == cart.status && Objects.equals(user, cart.user) && Objects.equals(sessionId, cart.sessionId) && Objects.equals(createdAt, cart.createdAt) && Objects.equals(updatedAt, cart.updatedAt);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, user, sessionId, status);
-    }
 }

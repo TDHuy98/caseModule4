@@ -1,6 +1,6 @@
 CREATE SCHEMA `caseModule4` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 use casemodule4;
-CREATE TABLE `caseModule4`.`user` (
+CREATE TABLE `caseModule4`.`account` (
 	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(50) NOT NULL,
 	`password` VARCHAR(32) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `caseModule4`.`user` (
   INDEX `idx_product_user` (`userId` ASC),
   CONSTRAINT `fk_product_user`
     FOREIGN KEY (`userId`)
-    REFERENCES `caseModule4`.`user` (`id`)
+    REFERENCES `caseModule4`.`account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -79,7 +79,7 @@ ADD CONSTRAINT `fk_category_parent`
   INDEX `idx_cart_user` (`userId` ASC),
   CONSTRAINT `fk_cart_user`
     FOREIGN KEY (`userId`)
-    REFERENCES `caseModule4`.`user` (`id`)
+    REFERENCES `caseModule4`.`account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
     
@@ -123,7 +123,7 @@ ADD CONSTRAINT `fk_cart_item_cart`
   INDEX `idx_bill_user` (`userId` ASC),
   CONSTRAINT `fk_order_user`
     FOREIGN KEY (`userId`)
-    REFERENCES `caseModule4`.`user` (`id`)
+    REFERENCES `caseModule4`.`account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
     
@@ -166,7 +166,7 @@ ADD CONSTRAINT `fk_bill_item_bill`
   INDEX `idx_transaction_user` (`userId` ASC),
   CONSTRAINT `fk_transaction_user`
     FOREIGN KEY (`userId`)
-    REFERENCES `caseModule4`.`user` (`id`)
+    REFERENCES `caseModule4`.`account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

@@ -1,10 +1,12 @@
 package com.codegym.casemodule4.repositories;
 
 import com.codegym.casemodule4.entities.Account;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 
-@Repository
+public interface AccountRepository extends PagingAndSortingRepository <Account,Long>{
+   Account findAccountByUsername(String username);
 
-public interface AccountRepository extends JpaRepository<Account, Long> {
 }

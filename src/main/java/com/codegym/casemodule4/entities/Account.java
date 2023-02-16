@@ -1,59 +1,27 @@
 package com.codegym.casemodule4.entities;
 
+import lombok.*;
+
 import javax.persistence.*;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-public class Account implements Serializable {
-//    public static final String ROLE_USER = "USER";
-//    public static final String ROLE_ADMIN = "ADMIN";
-//    private static final long serialVersionUID = -2054386655979281969L;
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Id
-//    @Column(name = "id", unique = true, nullable = false)
-//    private Long id;
-//
-//    @OneToOne(mappedBy = "account")
-//    @JoinColumn(name = "user_id",nullable = false)
-//    private User user;
-//
-//
-//    @Basic
-//    @Column(name = "user_name", length = 20, nullable = false)
-//    private String userName;
-//    @Basic
-//    @Column(name = "encryted_password", length = 128, nullable = false)
-//    private String encrytedPassword;
-//    @Basic
-//    @Column(name = "active", length = 1, nullable = false)
-//    private boolean active;
-//    @Basic
-//    @Column(name = "user_role", length = 20, nullable = false)
-//    private String userRole;
-//    @OneToMany(mappedBy = "accountByUserId")
-//    private List<Bill> billsById;
-//
-//
-//    @Override
-//    public String toString() {
-//        return "Account{" +
-//                "id=" + id +
-//                ", userName='" + userName + '\'' +
-//                ", encrytedPassword='" + encrytedPassword + '\'' +
-//                ", active=" + active +
-//                ", userRole='" + userRole + '\'' +
-//                '}';
-//    }
+public class Account {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private long id;
+    private String username;
+    private String password;
+    private String fullname;
+    private String phonenumber;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
+
 
 }
