@@ -109,7 +109,7 @@ ADD CONSTRAINT `fk_cart_item_cart`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
     
-    CREATE TABLE `caseModule4`.`bill` (
+    CREATE TABLE `caseModule4`.`order` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `userId` BIGINT NULL DEFAULT NULL,
   `sessionId` VARCHAR(100) NOT NULL,
@@ -149,7 +149,7 @@ ADD INDEX `idx_bill_item_bill` (`billId` ASC);
 ALTER TABLE `caseModule4`.`bill_item`
 ADD CONSTRAINT `fk_bill_item_bill`
   FOREIGN KEY (`billId`)
-  REFERENCES `caseModule4`.`bill` (`id`)
+  REFERENCES `caseModule4`.`order` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
@@ -175,6 +175,6 @@ ADD INDEX `idx_transaction_bill` (`billId` ASC);
 ALTER TABLE `caseModule4`.`transaction`
 ADD CONSTRAINT `fk_transaction_bill`
   FOREIGN KEY (`billId`)
-  REFERENCES `caseModule4`.`bill` (`id`)
+  REFERENCES `caseModule4`.`order` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;

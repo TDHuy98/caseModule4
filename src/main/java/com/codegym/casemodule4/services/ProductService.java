@@ -1,18 +1,17 @@
 package com.codegym.casemodule4.services;
 
 import com.codegym.casemodule4.entities.Product;
+import org.springframework.validation.annotation.Validated;
 
-import java.util.List;
-import java.util.Optional;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+@Validated
 public interface ProductService {
-    List<Product> getProductsList();
 
-    void createProduct(Product product);
+    @NotNull Iterable<Product> getAllProducts();
 
-    void removeProductById(Long id);
+    Product getProduct(@Min(value = 1L, message = "Invalid product ID.") long id);
 
-    Optional<Product> getProductById(Long id);
-
-    List<Product> getAllProductByCategoryId(int id);
+    Product save(Product product);
 }

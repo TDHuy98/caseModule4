@@ -1,42 +1,63 @@
 package com.codegym.casemodule4.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "product")
 public class Product {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", length = 20, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category category;
-
-    @Column(name = "name", length = 255, nullable = false)
+    @NotNull(message = "Product name is required.")
+    @Basic(optional = false)
     private String name;
 
-    @Column(name = "price", nullable = false)
-    private double price;
+    private Double price;
 
-    //    @Lob
-//    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
-    @Column(name = "image", nullable = false)
-    private String image;
+    private String pictureUrl;
 
+    public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.pictureUrl = pictureUrl;
+    }
 
+    public Product() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
 }
+
