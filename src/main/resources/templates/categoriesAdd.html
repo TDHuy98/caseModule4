@@ -42,7 +42,7 @@
             <form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
 
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Điền vào tên category </label>
                     <input type="hidden" name="id"  th:field="*{id}">
                     <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
 

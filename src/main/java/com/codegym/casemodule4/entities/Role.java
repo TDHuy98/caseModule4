@@ -1,19 +1,22 @@
 package com.codegym.casemodule4.entities;
 
-import lombok.*;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
-@EqualsAndHashCode
-public class Category {
+@Table(name = "role")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false,unique = true)
+    @NotEmpty
     private String name;
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
     public Integer getId() {
         return id;
@@ -31,11 +34,11 @@ public class Category {
         this.name = name;
     }
 
-    public Category() {
+    public List<User> getUsers() {
+        return users;
     }
 
-    public Category(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

@@ -86,7 +86,7 @@ ADD CONSTRAINT `fk_category_parent`
     CREATE TABLE `caseModule4`.`cart_item` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `productId` BIGINT NOT NULL,
-  `cartId` BIGINT NOT NULL,
+  `cart` BIGINT NOT NULL,
   `price` FLOAT NOT NULL DEFAULT 0,
   `quantity` SMALLINT(6) NOT NULL DEFAULT 0,
   `active` TINYINT(1) NOT NULL DEFAULT 0,
@@ -101,10 +101,10 @@ ADD CONSTRAINT `fk_category_parent`
     ON UPDATE NO ACTION);
 
 ALTER TABLE `caseModule4`.`cart_item`
-ADD INDEX `idx_cart_item_cart` (`cartId` ASC);
+ADD INDEX `idx_cart_item_cart` (`cart` ASC);
 ALTER TABLE `caseModule4`.`cart_item`
 ADD CONSTRAINT `fk_cart_item_cart`
-  FOREIGN KEY (`cartId`)
+  FOREIGN KEY (`cart`)
   REFERENCES `caseModule4`.`cart` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
